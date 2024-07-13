@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GunRun.Scripts
 {
-    public class Shotgun : WeaponBase
+    public class Shotgun : ShootingWeapon
     {
 
     }

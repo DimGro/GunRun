@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GunRun.Scripts
 {
-    public class Pistol : WeaponBase
+    public class Pistol : ShootingWeapon
     {
         
     }

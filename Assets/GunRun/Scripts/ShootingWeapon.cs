@@ -4,16 +4,31 @@ using UnityEngine;
 
 namespace GunRun.Scripts
 {
-    public abstract class WeaponBase : MonoBehaviour
+    public abstract class ShootingWeapon : Weapon
     {
         [SerializeField] private List<Transform> bulletSpawnPoints;
         [SerializeField] protected float shootRate = 0.5f;
         [SerializeField] protected Bullet bulletPrefab;
         [SerializeField] protected float bulletForce = 10f;
         [SerializeField] protected float bulletLifetime = 10f;
-        protected DateTime _lastShootTime;
+        private DateTime _lastShootTime;
         
-        public virtual void Shoot()
+        public override void Use()
+        {
+            Shoot();
+        }
+
+        public override void Equip()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public override void Unequip()
+        {
+            gameObject.SetActive(false);
+        }
+        
+        protected virtual void Shoot()
         {
             if (!CanShoot()) return;
 
@@ -23,14 +38,13 @@ namespace GunRun.Scripts
                 bullet.rigidbody.AddForce(spawnPoint.up * bulletForce, ForceMode2D.Impulse);
             }
         }
-        
-        protected bool CanShoot()
+
+        private bool CanShoot()
         {
             var timeSinceLastShoot = DateTime.Now - _lastShootTime;
             var canShoot = timeSinceLastShoot.TotalSeconds >= shootRate;
             if (canShoot) _lastShootTime = DateTime.Now;
             return canShoot;
         }
-        
     }
 }

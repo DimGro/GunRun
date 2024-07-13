@@ -1,14 +1,12 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace GunRun.Scripts
 {
-    public class PlayerShootingController : MonoBehaviour
+    public class PlayerWeaponController : MonoBehaviour
     {
-        [SerializeField] private List<WeaponBase> weapons;
-        private WeaponBase _currentWeapon;
+        [SerializeField] private List<Weapon> weapons;
+        private Weapon _currentWeapon;
         private int _currentWeaponIndex = -1;
         
         private void Awake()
@@ -20,7 +18,7 @@ namespace GunRun.Scripts
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                _currentWeapon.Shoot();
+                _currentWeapon.Use();
             }
             
             if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -40,11 +38,11 @@ namespace GunRun.Scripts
         {
             if (_currentWeaponIndex == weaponIndex) return;
 
-            _currentWeapon?.gameObject.SetActive(false);
+            _currentWeapon?.Unequip();
             
             _currentWeaponIndex = weaponIndex;
             _currentWeapon = weapons[weaponIndex];
-            _currentWeapon.gameObject.SetActive(true);
+            _currentWeapon.Equip();
         }
     }
 }
