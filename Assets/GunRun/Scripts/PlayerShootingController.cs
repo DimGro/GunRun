@@ -18,12 +18,12 @@ namespace GunRun.Scripts
         
         private void Update()
         {
-            if (Input.GetKey(KeyCode.F1))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
                 _currentWeapon.Shoot();
             }
             
-            if (Input.GetKeyDown(KeyCode.F2))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 EquipNextWeapon();
             }
