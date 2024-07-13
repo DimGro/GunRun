@@ -14,6 +14,7 @@ namespace GunRun.Scripts
         {
             _moveDirection.x = Input.GetAxisRaw("Horizontal");
             _moveDirection.y = Input.GetAxisRaw("Vertical");
+            _moveDirection.Normalize();
         }
 
         private void FixedUpdate()
