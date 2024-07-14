@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,12 +16,33 @@ namespace GunRun.Scripts
         
         private void Awake()
         {
+            Init();
+        }
+
+        private void OnDestroy()
+        {
+            UnsubscribeFromEvents();
+        }
+
+        private void Init()
+        {
             _useWeaponAction = playerInput.actions["UseWeapon"];
             _switchWeaponAction = playerInput.actions["SwitchWeapon"];
             
+            SubscribeToEvents();
+            EquipWeapon(0);
+        }
+
+        private void SubscribeToEvents()
+        {
             _useWeaponAction.started += UseWeaponHandler;
             _switchWeaponAction.started += SwitchWeaponHandler;
-            EquipWeapon(0);
+        }
+        
+        private void UnsubscribeFromEvents()
+        {
+            _useWeaponAction.started -= UseWeaponHandler;
+            _switchWeaponAction.started -= SwitchWeaponHandler;
         }
 
         private void SwitchWeaponHandler(InputAction.CallbackContext _)
