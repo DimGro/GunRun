@@ -6,8 +6,8 @@ namespace GunRun.Scripts
     public class PlayerLookController : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D rigidbody;
-        [SerializeField] private List<Transform> lookAttractionObjects;
-
+        [SerializeField] private List<GameObject> _lookAttractors = new ();
+        
         private void FixedUpdate()
         {
             UpdateLookDirection();
@@ -26,13 +26,14 @@ namespace GunRun.Scripts
             var closestAttractionPoint = Vector2.zero;
             var distanceToClosestObject = float.MaxValue;
             
-            foreach (var attractionObject in lookAttractionObjects)
+            foreach (var lookAttractor in _lookAttractors)
             {
-                var distanceToObject = Vector2.Distance(transform.position, attractionObject.transform.position);
+                if (lookAttractor == null || !lookAttractor.activeInHierarchy) continue;
+                var distanceToObject = Vector2.Distance(transform.position, lookAttractor.transform.position);
                 if (distanceToObject < distanceToClosestObject)
                 {
                     distanceToClosestObject = distanceToObject;
-                    closestAttractionPoint = attractionObject.position;
+                    closestAttractionPoint = lookAttractor.transform.position;
                 }
             }
 
