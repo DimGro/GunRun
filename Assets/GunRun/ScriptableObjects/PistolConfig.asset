@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a984a5c5f46e40f7b1cee0031b114f61, type: 3}
   m_Name: PistolConfig
   m_EditorClassIdentifier: 
-  shootRate: 0.2
+  shootRate: 0.15
   bulletPrefab: {fileID: 7217286302271760416, guid: 4759a0c24ef079149923836424dadcbf, type: 3}
-  bulletForce: 10
+  bulletForce: 20
   bulletLifetime: 100
   shotSound: {fileID: 8300000, guid: 06d14f9efe6f56c408559cf604ed2586, type: 3}

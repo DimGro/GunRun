@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootRate: 0.4
   bulletPrefab: {fileID: 7217286302271760416, guid: 4759a0c24ef079149923836424dadcbf, type: 3}
-  bulletForce: 20
-  bulletLifetime: 0.25
+  bulletForce: 25
+  bulletLifetime: 0.2
   shotSound: {fileID: 8300000, guid: 9ae6e94f0e78a3849a1ce9c551203c43, type: 3}
