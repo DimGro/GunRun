@@ -7,6 +7,7 @@ namespace GunRun.Scripts
     {
         [SerializeField] private Rigidbody2D rigidbody;
         [SerializeField] private List<GameObject> lookAttractors = new ();
+        [SerializeField] private float lookRadius = 10f;
         
         private void FixedUpdate()
         {
@@ -23,18 +24,18 @@ namespace GunRun.Scripts
 
         private Vector2 FindClosestAttractionPoint()
         {
-            var closestAttractionPoint = Vector2.zero;
+            var closestAttractionPoint = transform.position + transform.up;
             var distanceToClosestObject = float.MaxValue;
             
             foreach (var lookAttractor in lookAttractors)
             {
                 if (lookAttractor == null || !lookAttractor.activeInHierarchy) continue;
+                
                 var distanceToObject = Vector2.Distance(transform.position, lookAttractor.transform.position);
-                if (distanceToObject < distanceToClosestObject)
-                {
-                    distanceToClosestObject = distanceToObject;
-                    closestAttractionPoint = lookAttractor.transform.position;
-                }
+                if (distanceToObject > lookRadius || distanceToObject >= distanceToClosestObject) continue;
+                
+                distanceToClosestObject = distanceToObject;
+                closestAttractionPoint = lookAttractor.transform.position;
             }
 
             return closestAttractionPoint;
