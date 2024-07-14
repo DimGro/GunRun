@@ -7,6 +7,7 @@ namespace GunRun.Scripts
     public abstract class ShootingWeapon : Weapon
     {
         [SerializeField] private List<Transform> bulletSpawnPoints;
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private ShootingWeaponConfig config;
         private DateTime _lastShootTime;
         
@@ -33,6 +34,8 @@ namespace GunRun.Scripts
             {
                 var bullet = Instantiate(config.bulletPrefab, spawnPoint.position, spawnPoint.rotation);
                 bullet.rigidbody.AddForce(spawnPoint.up * config.bulletForce, ForceMode2D.Impulse);
+                audioSource.clip = config.shotSound;
+                audioSource.Play();
                 if (config.bulletLifetime > 0) bullet.DestroyAfterTime(config.bulletLifetime);
             }
         }

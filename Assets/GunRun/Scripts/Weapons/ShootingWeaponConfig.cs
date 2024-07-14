@@ -9,5 +9,6 @@ namespace GunRun.Scripts
         public Bullet bulletPrefab;
         public float bulletForce = 10f;
         public float bulletLifetime = 10f;
+        public AudioClip shotSound;
     }
 }
