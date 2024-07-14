@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace GunRun.Scripts
 {
@@ -19,7 +18,7 @@ namespace GunRun.Scripts
             _useWeaponAction = playerInput.actions["UseWeapon"];
             _switchWeaponAction = playerInput.actions["SwitchWeapon"];
             
-            _useWeaponAction.performed += UseWeaponHandler;
+            _useWeaponAction.started += UseWeaponHandler;
             _switchWeaponAction.started += SwitchWeaponHandler;
             EquipWeapon(0);
         }
@@ -33,20 +32,7 @@ namespace GunRun.Scripts
         {
             _currentWeapon.Use();
         }
-
-        // private void Update()
-        // {
-        //     if (Input.GetKey(KeyCode.Mouse0))
-        //     {
-        //         _currentWeapon.Use();
-        //     }
-        //     
-        //     if (Input.GetKeyDown(KeyCode.Mouse1))
-        //     {
-        //         EquipNextWeapon();
-        //     }
-        // }
-
+        
         private void EquipNextWeapon()
         {
             var nextWeaponIndex = _currentWeaponIndex + 1;

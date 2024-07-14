@@ -201,10 +201,7 @@ MonoBehaviour:
   - {fileID: 2952428454426617256}
   - {fileID: 5857235612575939469}
   - {fileID: 5819999182014041653}
-  shootRate: 0.5
-  bulletPrefab: {fileID: 7217286302271760416, guid: 4759a0c24ef079149923836424dadcbf, type: 3}
-  bulletForce: 20
-  bulletLifetime: 10
+  config: {fileID: 11400000, guid: 677cf5e94e163e948b3b1c99fd924abb, type: 2}
 --- !u!1 &2952428453491459039
 GameObject:
   m_ObjectHideFlags: 0

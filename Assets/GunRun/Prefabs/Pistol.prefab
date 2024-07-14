@@ -79,10 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawnPoints:
   - {fileID: 3144980852163480319}
-  shootRate: 0.25
-  bulletPrefab: {fileID: 7217286302271760416, guid: 4759a0c24ef079149923836424dadcbf, type: 3}
-  bulletForce: 20
-  bulletLifetime: 10
+  config: {fileID: 11400000, guid: 3ca9aff9ffd6b5e4f871fbe87704526c, type: 2}
 --- !u!212 &3144980852823779257
 SpriteRenderer:
   m_ObjectHideFlags: 0

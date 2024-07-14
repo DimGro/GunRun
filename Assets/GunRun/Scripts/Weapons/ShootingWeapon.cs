@@ -7,10 +7,7 @@ namespace GunRun.Scripts
     public abstract class ShootingWeapon : Weapon
     {
         [SerializeField] private List<Transform> bulletSpawnPoints;
-        [SerializeField] protected float shootRate = 0.5f;
-        [SerializeField] protected Bullet bulletPrefab;
-        [SerializeField] protected float bulletForce = 10f;
-        [SerializeField] protected float bulletLifetime = 10f;
+        [SerializeField] private ShootingWeaponConfig config;
         private DateTime _lastShootTime;
         
         public override void Use()
@@ -34,15 +31,16 @@ namespace GunRun.Scripts
 
             foreach (var spawnPoint in bulletSpawnPoints)
             {
-                var bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-                bullet.rigidbody.AddForce(spawnPoint.up * bulletForce, ForceMode2D.Impulse);
+                var bullet = Instantiate(config.bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+                bullet.rigidbody.AddForce(spawnPoint.up * config.bulletForce, ForceMode2D.Impulse);
+                if (config.bulletLifetime > 0) bullet.DestroyAfterTime(config.bulletLifetime);
             }
         }
 
         private bool CanShoot()
         {
             var timeSinceLastShoot = DateTime.Now - _lastShootTime;
-            var canShoot = timeSinceLastShoot.TotalSeconds >= shootRate;
+            var canShoot = timeSinceLastShoot.TotalSeconds >= config.shootRate;
             if (canShoot) _lastShootTime = DateTime.Now;
             return canShoot;
         }
