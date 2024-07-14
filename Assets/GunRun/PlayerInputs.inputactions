@@ -1,0 +1,74 @@
+{
+    "name": "PlayerInputs",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "4104be25-ac21-42c6-8756-dbe8de62ffac",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "0b739d84-ef3a-4931-b247-10f69f7d95e6",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SwitchWeapon",
+                    "type": "Button",
+                    "id": "f3aab434-a6a4-4836-882f-ee87887bb56a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseWeapon",
+                    "type": "Button",
+                    "id": "2bb1d1bb-f909-4f65-a246-d681db81434d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d2ccc2d2-774b-472c-ab97-467033ad0aaa",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e4a4ad7-2fc5-4715-b6c5-f72e9a5e44ea",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d547c8b4-9f73-416d-8a83-92d0df0d9c99",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

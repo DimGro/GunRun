@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GunRun.Scripts
 {
     public class PlayerLookController : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D rigidbody;
-        [SerializeField] private List<GameObject> _lookAttractors = new ();
+        [SerializeField] private List<GameObject> lookAttractors = new ();
         
         private void FixedUpdate()
         {
@@ -26,7 +27,7 @@ namespace GunRun.Scripts
             var closestAttractionPoint = Vector2.zero;
             var distanceToClosestObject = float.MaxValue;
             
-            foreach (var lookAttractor in _lookAttractors)
+            foreach (var lookAttractor in lookAttractors)
             {
                 if (lookAttractor == null || !lookAttractor.activeInHierarchy) continue;
                 var distanceToObject = Vector2.Distance(transform.position, lookAttractor.transform.position);
